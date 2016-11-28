@@ -590,7 +590,7 @@ int main(int argc, char **argv)
 		double *yr;
 		double *solr;
 		int ii;
-		/*for(ii = 1; ii <= ProcNum - 1; ii++)
+		for(ii = 1; ii <= ProcNum - 1; ii++)
 		{
 			MPI_Recv(size, 2, MPI_INT, ii, 0, Grid_Comm, &status);
 			xr = (double*)malloc(size[0]*sizeof(double));
@@ -607,20 +607,20 @@ int main(int argc, char **argv)
 			free(xr);
 			free(yr);
 			free(solr);
-		}*/
+		}
 		finish = MPI_Wtime();
 		fprintf(fp,"runtime = %f", finish - start);
 	    fclose(fp);
 	}
 	else
 	{
-		/*int size[2];
+		int size[2];
 		size[0] = n0;
 		size[1] = n1;
 		MPI_Send(size, 2, MPI_INT, 0, 0, Grid_Comm);
 		MPI_Send(x, n0, MPI_DOUBLE, 0, 1, Grid_Comm);
 		MPI_Send(y, n1, MPI_DOUBLE, 0, 2, Grid_Comm);
-		MPI_Send(SolVect, n0*n1, MPI_DOUBLE, 0, 3, Grid_Comm);*/
+		MPI_Send(SolVect, n0*n1, MPI_DOUBLE, 0, 3, Grid_Comm);
 	}
 
 	free(SolVect); free(ResVect); free(BasicVect); free(RHS_Vect); free(PromVect); free(x); free(y);

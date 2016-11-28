@@ -641,7 +641,7 @@ int main(int argc, char **argv)
 			for (i=0; i < n0; i++)
 				fprintf(fp,"%f;%f;%f\n", x[i], y[j], SolVect[n0*j+i]);
 		}
-		/*int size[2];
+		int size[2];
 		double *xr;
 		double *yr;
 		double *solr;
@@ -665,7 +665,7 @@ int main(int argc, char **argv)
 			free(xr);
 			free(yr);
 			free(solr);
-		}*/
+		}
 		finish = MPI_Wtime();
 		fprintf(fp,"runtime = %f", finish - start);
 	    fclose(fp);
@@ -673,12 +673,12 @@ int main(int argc, char **argv)
 	else
 	{
 		int size[2];
-		/*size[0] = n0;
+		size[0] = n0;
 		size[1] = n1;
 		MPI_Send(size, 2, MPI_INT, 0, 0, Grid_Comm);
 		MPI_Send(x, n0, MPI_DOUBLE, 0, 1, Grid_Comm);
 		MPI_Send(y, n1, MPI_DOUBLE, 0, 2, Grid_Comm);
-		MPI_Send(SolVect, n0*n1, MPI_DOUBLE, 0, 3, Grid_Comm);*/
+		MPI_Send(SolVect, n0*n1, MPI_DOUBLE, 0, 3, Grid_Comm);
 	}
 
 	free(SolVect); free(ResVect); free(BasicVect); free(RHS_Vect); free(PromVect); free(x); free(y);
